@@ -1,0 +1,53 @@
+@layer components {
+    .nav-drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        min-height: 100dvh;
+        background-color: var(--color-muted-foreground);
+        opacity: calc(1 - var(--drawer-swipe-progress, 0));
+        transition: opacity 300ms ease-out;
+    }
+
+    .nav-drawer-backdrop[data-starting-style],
+    .nav-drawer-backdrop[data-ending-style] {
+        opacity: 0;
+    }
+
+    .nav-drawer-backdrop[data-swiping] {
+        transition-duration: 0ms;
+    }
+
+    .nav-drawer-viewport {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav-drawer-popup {
+        height: 100%;
+        width: min(15rem, 100vw);
+        background-color: var(--color-surface-header);
+        padding: 1.5rem;
+        outline: none;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        box-shadow: var(--shadow-low);
+        transform: translateX(var(--drawer-swipe-movement-x, 0));
+        transition: transform 300ms ease-out;
+    }
+
+    .nav-drawer-popup[data-starting-style],
+    .nav-drawer-popup[data-ending-style] {
+        transform: translateX(100%);
+    }
+
+    .nav-drawer-popup[data-swiping] {
+        transition-duration: 0ms;
+        user-select: none;
+    }
+
+    .nav-drawer-popup[data-ending-style] {
+        transition-duration: calc(var(--drawer-swipe-strength, 1) * 300ms);
+    }
+}

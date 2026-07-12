@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+@import '@/shared/ui/drawer/drawer.css';
+
+@theme {
+    /* UniFi palette — extracted from Figma style guide */
+    --color-primary: #006fff;
+    --color-logo: #50565e;
+
+    --color-surface: #ffffff;
+    --color-surface-header: #f4f5f6;
+    --color-surface-muted: #f9fafa;
+    --color-surface-search: #f6f6f8;
+
+    --color-border: #ededf0;
+
+    --color-foreground: rgba(0, 0, 0, 0.85);
+    --color-muted-foreground: rgba(0, 0, 0, 0.45);
+    --color-subtle-foreground: #808893;
+    --color-faint-foreground: #bdbdbd;
+    --color-heading: #212327;
+
+    --font-sans: 'UI Sans', 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    /* Typography (Figma px ÷ 16 = rem, with html root at 16px) */
+    /* Caption — 12px / 16px */
+    --text-xs: 0.75rem;
+    --text-xs--line-height: 1rem;
+    /* Web/Body-primary — 14px / 20px */
+    --text-sm: 0.875rem;
+    --text-sm--line-height: 1.25rem;
+    /* Web/Heading-xlarge-1 — 20px / 28px */
+    --text-xl: 1.25rem;
+    --text-xl--line-height: 1.75rem;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+
+    --shadow-low: 0 0 0.5px rgba(0, 0, 0, 0.06), 0 8px 12px rgba(0, 0, 0, 0.08);
+
+    --container-page: 90rem; /* 1440px as in Figma */
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--color-foreground);
+    background-color: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    isolation: isolate;
+    min-height: 100svh;
+}
