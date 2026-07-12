@@ -19,11 +19,15 @@ export const MainNavigationItem = ({
         <li>
             <NavLink
                 to={to}
-                className={cn(
-                    'px-1 py-1 text-subtle-foreground hover:text-foreground',
-                    focusClassRounded,
-                    className,
-                )}
+                className={({ isActive }) =>
+                    cn(
+                        'px-1 py-1 text-subtle-foreground hover:text-foreground',
+                        focusClassRounded,
+                        className,
+                        isActive && 'text-foreground',
+                    )
+                }
+                end
                 onClick={onClick}
             >
                 {children}

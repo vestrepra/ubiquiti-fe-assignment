@@ -5,11 +5,7 @@ export type mainNavItem = {
 
 export const mainNavItems: mainNavItem[] = [
     {
-        label: 'Home',
+        label: 'Devices',
         to: '/',
-    },
-    {
-        label: 'Catalog',
-        to: '/catalog',
     },
 ];
