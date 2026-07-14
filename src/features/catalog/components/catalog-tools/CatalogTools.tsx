@@ -1,6 +1,7 @@
 import ListViewIcon from '@/assets/list-view-icon.svg?react';
 import GridViewIcon from '@/assets/grid-view-icon.svg?react';
 import { Button } from '@/shared/ui/button/Button';
+import { CatalogFilter } from './CatalogFilter';
 
 export type CatalogToolsProps = {
     view: 'table' | 'grid';
@@ -19,7 +20,7 @@ export const CatalogTools = ({ view, setView }: CatalogToolsProps) => {
             <Button isActive={view === 'grid'} onClick={() => setView('grid')}>
                 <GridViewIcon />
             </Button>
-            <Button className="text-muted-foreground">Filter</Button>
+            <CatalogFilter />
         </div>
     );
 };
