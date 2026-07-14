@@ -29,6 +29,13 @@ export const CatalogPage = () => {
                 ) : (
                     <CatalogViewGrid devices={filteredDevices} />
                 )}
+                {filteredDevices.length === 0 && (
+                    <div className="flex items-center justify-center h-full">
+                        <p className="text-sm text-foreground">
+                            No devices found
+                        </p>
+                    </div>
+                )}
             </div>
         </>
     );
