@@ -9,6 +9,8 @@ export type SearchBarProps<T> = {
     items: readonly T[];
     value: string;
     onValueChange: (value: string) => void;
+    onSubmit?: () => void;
+    onClear?: () => void;
     onItemSelect?: (item: T) => void;
     getItemKey: (item: T) => string;
     getItemLabel: (item: T) => string;
@@ -21,6 +23,8 @@ export const SearchBar = <T,>({
     items,
     value,
     onValueChange,
+    onSubmit,
+    onClear,
     onItemSelect,
     getItemKey,
     getItemLabel,
@@ -29,6 +33,12 @@ export const SearchBar = <T,>({
     className,
 }: SearchBarProps<T>) => {
     const [isOpen, setIsOpen] = useState(false);
+    const hasValue = value.length > 0;
+
+    const handleClear = () => {
+        onValueChange('');
+        onClear?.();
+    };
 
     return (
         <Autocomplete.Root
@@ -53,8 +63,14 @@ export const SearchBar = <T,>({
                             setIsOpen(true);
                         }
                     }}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            onSubmit?.();
+                        }
+                    }}
                     className={cn(
-                        'h-8 w-full rounded-sm bg-surface-search pl-8 pr-3 text-sm text-foreground',
+                        'search-input h-8 w-full rounded-sm bg-surface-search pl-8 text-sm text-foreground',
+                        hasValue ? 'pr-8' : 'pr-3',
                         'placeholder:text-muted-foreground focus:placeholder:opacity-0',
                         'hover:bg-border',
                         'focus:bg-surface-search focus:outline-primary',
@@ -62,6 +78,22 @@ export const SearchBar = <T,>({
                         className,
                     )}
                 />
+                {hasValue && (
+                    <button
+                        type="button"
+                        aria-label="Clear search"
+                        onClick={handleClear}
+                        className={cn(
+                            'absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground',
+                            'hover:text-foreground hover:cursor-pointer',
+                            focusClassRounded,
+                        )}
+                    >
+                        <span aria-hidden className="text-base leading-none">
+                            ×
+                        </span>
+                    </button>
+                )}
             </div>
 
             <Autocomplete.Portal>

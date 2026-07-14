@@ -62,3 +62,12 @@ body {
     isolation: isolate;
     min-height: 100svh;
 }
+
+.search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.search-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
