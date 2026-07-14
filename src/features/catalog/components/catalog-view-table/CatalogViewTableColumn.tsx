@@ -15,7 +15,7 @@ export const CatalogViewTableColumn = ({
     return (
         <Component
             className={cn(
-                'border-b border-border',
+                'border-b border-border group-focus-visible/row:border-b-transparent',
                 Component === 'th' &&
                     'text-left text-heading whitespace-nowrap',
                 className,

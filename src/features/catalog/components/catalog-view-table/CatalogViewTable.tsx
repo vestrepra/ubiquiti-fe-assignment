@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import type { Device } from '@/shared/api/products/products.schema';
 import { deviceImageUrl } from '@/shared/lib/device-image-url';
-import { focusClassRounded } from '@/shared/lib/focus-class';
+import { focusClassInset } from '@/shared/lib/focus-class';
 import { cn } from '@/shared/lib/cn';
 import { CatalogViewTableColumn } from './CatalogViewTableColumn';
 
@@ -41,7 +41,8 @@ export const CatalogViewTable = ({ devices }: CatalogViewTableProps) => {
                         }}
                         className={cn(
                             'h-8 min-h-8 cursor-pointer hover:bg-surface-header',
-                            focusClassRounded,
+                            focusClassInset,
+                            'group/row',
                         )}
                     >
                         <CatalogViewTableColumn>
