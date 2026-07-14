@@ -36,6 +36,8 @@
     --radius-md: 8px;
 
     --shadow-low: 0 0 0.5px rgba(0, 0, 0, 0.06), 0 8px 12px rgba(0, 0, 0, 0.08);
+    --shadow-high:
+        0 0 0.5px rgba(0, 0, 0, 0.06), 0 16px 24px rgba(0, 0, 0, 0.16);
 
     --container-page: 90rem; /* 1440px as in Figma */
 }
