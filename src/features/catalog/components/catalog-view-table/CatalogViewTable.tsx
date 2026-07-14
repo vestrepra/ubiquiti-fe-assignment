@@ -1,11 +1,11 @@
 import type { Device } from '@/shared/api/products/products.schema';
 import { deviceImageUrl } from '@/shared/lib/device-image-url';
 
-interface CatalogTableProps {
+export type CatalogViewTableProps = {
     devices: Device[];
-}
+};
 
-export const CatalogTable = ({ devices }: CatalogTableProps) => {
+export const CatalogViewTable = ({ devices }: CatalogViewTableProps) => {
     return (
         <table className="w-full border-separate border-spacing-x-1 border-spacing-0">
             <thead className="sticky h-8 min-h-8 top-28.5 z-40 bg-surface supports-backdrop-filter:bg-surface/95">
