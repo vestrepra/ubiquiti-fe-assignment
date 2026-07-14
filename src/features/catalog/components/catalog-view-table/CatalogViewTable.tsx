@@ -1,28 +1,50 @@
+import { useNavigate } from 'react-router-dom';
 import type { Device } from '@/shared/api/products/products.schema';
 import { deviceImageUrl } from '@/shared/lib/device-image-url';
+import { focusClassRounded } from '@/shared/lib/focus-class';
+import { cn } from '@/shared/lib/cn';
+import { CatalogViewTableColumn } from './CatalogViewTableColumn';
 
 export type CatalogViewTableProps = {
     devices: Device[];
 };
 
 export const CatalogViewTable = ({ devices }: CatalogViewTableProps) => {
+    const navigate = useNavigate();
+
     return (
-        <table className="w-full border-separate border-spacing-x-1 border-spacing-0">
+        <table className="w-full border-separate border-spacing-0">
             <thead className="sticky h-8 min-h-8 top-28.5 z-40 bg-surface supports-backdrop-filter:bg-surface/95">
                 <tr>
-                    <th className="w-10 border-b border-border"></th>
-                    <th className="text-left text-heading border-b border-border">
+                    <CatalogViewTableColumn as="th" className="w-10" />
+                    <CatalogViewTableColumn as="th">
                         Product Line
-                    </th>
-                    <th className="text-left text-heading border-b border-border">
+                    </CatalogViewTableColumn>
+                    <CatalogViewTableColumn as="th">
                         Name
-                    </th>
+                    </CatalogViewTableColumn>
                 </tr>
             </thead>
             <tbody>
                 {devices.map((device: Device) => (
-                    <tr key={device.id} className="h-8 min-h-8">
-                        <td className="border-b border-border">
+                    <tr
+                        key={device.id}
+                        role="link"
+                        tabIndex={0}
+                        aria-label={device.product.name}
+                        onClick={() => navigate(`/product/${device.id}`)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                navigate(`/product/${device.id}`);
+                            }
+                        }}
+                        className={cn(
+                            'h-8 min-h-8 cursor-pointer hover:bg-surface-header',
+                            focusClassRounded,
+                        )}
+                    >
+                        <CatalogViewTableColumn>
                             <img
                                 src={deviceImageUrl({
                                     deviceId: device.id,
@@ -31,17 +53,17 @@ export const CatalogViewTable = ({ devices }: CatalogViewTableProps) => {
                                 })}
                                 alt={device.product.name}
                             />
-                        </td>
-                        <td className="border-b border-border">
+                        </CatalogViewTableColumn>
+                        <CatalogViewTableColumn>
                             <span className="text-foreground">
                                 {device.line.name}
                             </span>
-                        </td>
-                        <td className="border-b border-border">
+                        </CatalogViewTableColumn>
+                        <CatalogViewTableColumn>
                             <span className="text-muted-foreground">
                                 {device.product.name}
                             </span>
-                        </td>
+                        </CatalogViewTableColumn>
                     </tr>
                 ))}
             </tbody>
