@@ -14,10 +14,10 @@
     --color-border: #ededf0;
 
     --color-foreground: rgba(0, 0, 0, 0.85);
-    --color-muted-foreground: rgba(0, 0, 0, 0.45);
+    --color-muted-foreground: #8c8c8c;
     --color-subtle-foreground: #808893;
     --color-faint-foreground: #bdbdbd;
-    --color-heading: #212327;
+    --color-heading: #262626;
 
     --font-sans: 'UI Sans', 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
 

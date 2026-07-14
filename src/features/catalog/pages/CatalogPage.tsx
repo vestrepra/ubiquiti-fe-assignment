@@ -1,15 +1,16 @@
 import { useProducts } from '@/shared/api/products';
+import { CatalogTable } from '../components/catalog-table/CatalogTable';
+import { Toolbar } from '@/shared/layout/toolbar/Toolbar';
+import { CatalogTools } from '../components/catalog-tools/CatalogTools';
 
 export const CatalogPage = () => {
-    const { data: products } = useProducts();
+    const { data: devices } = useProducts();
     return (
-        <div>
-            <h1>Catalog</h1>
-            <ul>
-                {products?.map((product) => (
-                    <li key={product.id}>{product.line.name}</li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <Toolbar rightSide={<CatalogTools />} />
+            <div>
+                <CatalogTable devices={devices ?? []} />
+            </div>
+        </>
     );
 };
