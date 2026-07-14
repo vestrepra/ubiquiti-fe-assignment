@@ -9,7 +9,7 @@ import { CatalogTools } from '../components/catalog-tools/CatalogTools';
 import { CatalogSearch } from '../components/catalog-tools/CatalogSearch';
 
 export const CatalogPage = () => {
-    const { data: devices = [] } = useProducts();
+    const { data: devices = [], isPending } = useProducts();
     const { view, setView, query, lines } = useCatalogFilters();
 
     const filteredDevices = useMemo(
@@ -25,11 +25,17 @@ export const CatalogPage = () => {
             />
             <div>
                 {view === 'table' ? (
-                    <CatalogViewTable devices={filteredDevices} />
+                    <CatalogViewTable
+                        devices={filteredDevices}
+                        isLoading={isPending}
+                    />
                 ) : (
-                    <CatalogViewGrid devices={filteredDevices} />
+                    <CatalogViewGrid
+                        devices={filteredDevices}
+                        isLoading={isPending}
+                    />
                 )}
-                {filteredDevices.length === 0 && (
+                {!isPending && filteredDevices.length === 0 && (
                     <div className="flex items-center justify-center h-full">
                         <p className="text-sm text-foreground">
                             No devices found

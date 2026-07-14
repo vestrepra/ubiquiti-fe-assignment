@@ -3,6 +3,7 @@ import type { Device } from '@/shared/api/products/products.schema';
 import { deviceImageUrl } from '@/shared/lib/device-image-url';
 import { cn } from '@/shared/lib/cn';
 import { focusClassRounded } from '@/shared/lib/focus-class';
+import { Image } from '@/shared/ui/image/Image';
 
 export type CatalogViewGridCardProps = {
     device: Device;
@@ -22,7 +23,7 @@ export const CatalogViewGridCard = ({ device }: CatalogViewGridCardProps) => {
                 <span className="absolute right-1 top-1 rounded-sm bg-surface px-1.5 py-0.5 text-xs text-primary">
                     {device.line.name}
                 </span>
-                <img
+                <Image
                     src={deviceImageUrl({
                         deviceId: device.id,
                         imageHash: device.images.default,
@@ -30,7 +31,6 @@ export const CatalogViewGridCard = ({ device }: CatalogViewGridCardProps) => {
                     })}
                     alt=""
                     className="h-full object-contain"
-                    loading="lazy"
                 />
             </div>
 
