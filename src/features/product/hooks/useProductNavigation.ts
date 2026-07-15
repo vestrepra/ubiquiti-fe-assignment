@@ -21,17 +21,21 @@ export const useProductNavigation = (currentId: string | undefined) => {
     const hasNext =
         currentIndex >= 0 && currentIndex < sortedDevices.length - 1;
 
+    const goToProduct = (id: string) => {
+        navigate(`/product/${id}`, { replace: true });
+    };
+
     const goToPrevious = () => {
         const previous = sortedDevices[currentIndex - 1];
         if (previous) {
-            navigate(`/product/${previous.id}`);
+            goToProduct(previous.id);
         }
     };
 
     const goToNext = () => {
         const next = sortedDevices[currentIndex + 1];
         if (next) {
-            navigate(`/product/${next.id}`);
+            goToProduct(next.id);
         }
     };
 
