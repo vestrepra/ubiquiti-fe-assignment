@@ -4,6 +4,7 @@
 @theme {
     /* UniFi palette — extracted from Figma style guide */
     --color-primary: #006fff;
+    --color-primary-hover: #0052cc;
     --color-logo: #50565e;
 
     --color-surface: #ffffff;
