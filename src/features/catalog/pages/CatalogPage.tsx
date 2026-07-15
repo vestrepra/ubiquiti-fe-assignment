@@ -34,7 +34,7 @@ export const CatalogPage = () => {
                 }
                 rightSide={<CatalogTools view={view} setView={setView} />}
             />
-            <div>
+            <div className="pb-8">
                 {isError ? (
                     <PageErrorFallback
                         title="Could not load products."
