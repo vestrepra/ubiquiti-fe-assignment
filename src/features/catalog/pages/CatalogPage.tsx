@@ -36,9 +36,9 @@ export const CatalogPage = () => {
                     />
                 )}
                 {!isPending && filteredDevices.length === 0 && (
-                    <div className="flex items-center justify-center h-full">
+                    <div className="flex items-center justify-center mt-10">
                         <p className="text-sm text-foreground">
-                            No devices found
+                            No devices found.
                         </p>
                     </div>
                 )}

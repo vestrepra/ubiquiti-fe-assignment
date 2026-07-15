@@ -10,7 +10,7 @@ export const ProductDetailPage = () => {
 
     if (isError || (!device && !isPending)) {
         return (
-            <div className="flex items-center justify-center my-16">
+            <div className="flex items-center justify-center mt-10">
                 <p className="text-sm text-foreground">Product not found.</p>
             </div>
         );
