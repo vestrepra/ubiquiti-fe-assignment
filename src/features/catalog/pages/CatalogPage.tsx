@@ -8,6 +8,7 @@ import { CatalogViewTable } from '../components/catalog-view-table/CatalogViewTa
 import { CatalogViewGrid } from '../components/catalog-view-grid/CatalogViewGrid';
 import { CatalogTools } from '../components/catalog-tools/CatalogTools';
 import { CatalogSearch } from '../components/catalog-tools/CatalogSearch';
+import { CatalogDeviceCount } from '../components/catalog-tools/CatalogDeviceCount';
 
 export const CatalogPage = () => {
     const { data: devices = [], isPending, isError, refetch } = useProducts();
@@ -21,7 +22,16 @@ export const CatalogPage = () => {
     return (
         <>
             <Toolbar
-                leftSide={<CatalogSearch />}
+                leftSide={
+                    <>
+                        <CatalogSearch />
+                        {!isPending && !isError && (
+                            <CatalogDeviceCount
+                                count={filteredDevices.length}
+                            />
+                        )}
+                    </>
+                }
                 rightSide={<CatalogTools view={view} setView={setView} />}
             />
             <div>
