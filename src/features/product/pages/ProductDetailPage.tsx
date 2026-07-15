@@ -40,7 +40,10 @@ export const ProductDetailPage = () => {
             <ProductDetailToolbar currentId={id} />
             <div className="mx-auto flex w-full flex-col items-center gap-8 py-4 lg:w-3xl">
                 <div className="grid w-full gap-8 lg:grid-cols-2">
-                    <ProductDetailsImage device={device!} isLoading={isPending} />
+                    <ProductDetailsImage
+                        device={device!}
+                        isLoading={isPending}
+                    />
                     <ProductDetails device={device!} isLoading={isPending} />
                 </div>
                 {!isPending && <ProductJsonDetailsDialog device={device!} />}

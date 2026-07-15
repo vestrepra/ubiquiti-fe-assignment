@@ -25,9 +25,13 @@ export const SearchBarListItem = ({
         )}
         {...props}
     >
-        <span className="truncate text-logo">{highlightMatch(primary, query ?? '')}</span>
+        <span className="truncate text-logo">
+            {highlightMatch(primary, query ?? '')}
+        </span>
         {secondary && (
-            <span className="ml-3 shrink-0 text-subtle-foreground">{secondary}</span>
+            <span className="ml-3 shrink-0 text-subtle-foreground">
+                {secondary}
+            </span>
         )}
     </Autocomplete.Item>
 );

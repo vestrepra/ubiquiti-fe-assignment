@@ -21,4 +21,5 @@ export default defineConfig({
         svgr(),
         babel({ presets: [reactCompilerPreset()] }),
     ],
+    base: '/ubiquiti-fe-assignment/',
 });
