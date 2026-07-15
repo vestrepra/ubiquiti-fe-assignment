@@ -25,6 +25,7 @@ export const Popover = ({
             <BasePopover.Portal>
                 <BasePopover.Positioner
                     className="z-50"
+                    positionMethod="fixed"
                     side="bottom"
                     align={align}
                     sideOffset={4}

@@ -97,7 +97,11 @@ export const SearchBar = <T,>({
             </div>
 
             <Autocomplete.Portal>
-                <Autocomplete.Positioner sideOffset={1} align="start">
+                <Autocomplete.Positioner
+                    sideOffset={1}
+                    align="start"
+                    positionMethod="fixed"
+                >
                     <Autocomplete.Popup
                         className={cn(
                             'w-80 overflow-hidden rounded-sm border border-border bg-surface shadow-high',
