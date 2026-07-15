@@ -18,6 +18,7 @@ export const Button = ({
         <BaseButton
             data-active={isActive}
             className={cn(
+                'flex items-center justify-center',
                 'hover:cursor-pointer hover:bg-surface-header px-2 py-1 rounded-sm',
                 'data-[active=true]:text-primary data-[active=true]:bg-surface-header',
                 focusClassRounded,

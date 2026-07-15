@@ -9,8 +9,7 @@ export const Skeleton = ({ className }: SkeletonProps) => {
         <div
             aria-hidden
             className={cn(
-                'animate-pulse rounded-sm bg-surface-header',
-                'motion-reduce:animate-none',
+                'animate-pulse rounded-sm bg-faint-foreground/40',
                 className,
             )}
         />
