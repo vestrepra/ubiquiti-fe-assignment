@@ -22,7 +22,14 @@ export const DeviceSchema = z.looseObject({
 });
 
 export const ProductsResponseSchema = z.object({
-    devices: z.array(DeviceSchema),
+    devices: z
+        .array(z.unknown())
+        .transform((items) =>
+            items.flatMap((item) => {
+                const parsed = DeviceSchema.safeParse(item);
+                return parsed.success ? [parsed.data] : [];
+            }),
+        ),
 });
 
 export type ProductsResponse = z.infer<typeof ProductsResponseSchema>;

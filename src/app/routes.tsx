@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Shell } from '@/shared/layout/shell/Shell';
 import { CatalogPage } from '@/features/catalog/pages/CatalogPage';
 import { ProductDetailPage } from '@/features/product/pages/ProductDetailPage';
+import { NotFoundPage } from '@/shared/pages/NotFoundPage';
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
             {
                 path: '/product/:id',
                 element: <ProductDetailPage />,
+            },
+            {
+                path: '*',
+                element: <NotFoundPage />,
             },
         ],
     },
