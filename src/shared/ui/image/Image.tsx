@@ -1,9 +1,10 @@
-import { useState, type ImgHTMLAttributes } from 'react';
+import { useState, useEffect, type ImgHTMLAttributes } from 'react';
 import placeholderSrc from '@/assets/img-placeholder.png';
 import { cn } from '@/shared/lib/cn';
 
 export type ImageProps = ImgHTMLAttributes<HTMLImageElement> & {
     className?: string;
+    onLoadingChange?: (isLoaded: boolean) => void;
 };
 
 export const Image = ({
@@ -13,6 +14,7 @@ export const Image = ({
     loading = 'lazy',
     onLoad,
     onError,
+    onLoadingChange = () => {},
     ...props
 }: ImageProps) => {
     const resolvedSrc = src ?? placeholderSrc;
@@ -25,6 +27,10 @@ export const Image = ({
         setHasError(false);
         setIsLoaded(false);
     }
+
+    useEffect(() => {
+        onLoadingChange(isLoaded);
+    }, [isLoaded, onLoadingChange]);
 
     const imgSrc = hasError ? placeholderSrc : resolvedSrc;
 

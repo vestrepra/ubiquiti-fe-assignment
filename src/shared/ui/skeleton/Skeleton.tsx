@@ -9,7 +9,7 @@ export const Skeleton = ({ className }: SkeletonProps) => {
         <div
             aria-hidden
             className={cn(
-                'animate-pulse rounded-sm bg-faint-foreground/40',
+                'animate-pulse rounded-sm bg-faint-foreground/10',
                 className,
             )}
         />
