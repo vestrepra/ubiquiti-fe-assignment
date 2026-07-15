@@ -4,22 +4,27 @@ import { CatalogPage } from '@/features/catalog/pages/CatalogPage';
 import { ProductDetailPage } from '@/features/product/pages/ProductDetailPage';
 import { NotFoundPage } from '@/shared/pages/NotFoundPage';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+    [
+        {
+            element: <Shell />,
+            children: [
+                {
+                    path: '/',
+                    element: <CatalogPage />,
+                },
+                {
+                    path: '/product/:id',
+                    element: <ProductDetailPage />,
+                },
+                {
+                    path: '*',
+                    element: <NotFoundPage />,
+                },
+            ],
+        },
+    ],
     {
-        element: <Shell />,
-        children: [
-            {
-                path: '/',
-                element: <CatalogPage />,
-            },
-            {
-                path: '/product/:id',
-                element: <ProductDetailPage />,
-            },
-            {
-                path: '*',
-                element: <NotFoundPage />,
-            },
-        ],
+        basename: '/ubiquiti-fe-assignment',
     },
-]);
+);
