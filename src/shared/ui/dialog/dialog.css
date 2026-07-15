@@ -1,0 +1,38 @@
+@layer components {
+    .dialog-backdrop {
+        position: fixed;
+        inset: 0;
+        min-height: 100dvh;
+        background-color: var(--color-muted-foreground);
+        opacity: 0.8;
+        transition: opacity 200ms ease-out;
+    }
+
+    .dialog-backdrop[data-starting-style],
+    .dialog-backdrop[data-ending-style] {
+        opacity: 0;
+    }
+
+    .dialog-viewport {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .dialog-popup {
+        width: 100%;
+        max-width: 42rem;
+        pointer-events: none;
+    }
+
+    .dialog-popup-panel {
+        pointer-events: auto;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background-color: var(--color-surface);
+        box-shadow: var(--shadow-high);
+    }
+}

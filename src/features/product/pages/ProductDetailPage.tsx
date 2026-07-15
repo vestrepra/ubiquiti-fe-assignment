@@ -4,6 +4,7 @@ import { PageErrorFallback } from '@/shared/error-boundary/PageErrorFallback';
 import { ProductDetailsImage } from '../components/product-details-image/ProductDetailsImage';
 import { ProductDetailToolbar } from '../components/product-detail-tools/ProductDetailToolbar';
 import { ProductDetails } from '../components/product-details/ProductDetails';
+import { ProductJsonDetailsDialog } from '../components/product-json-details/ProductJsonDetailsDialog';
 
 export const ProductDetailPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -37,9 +38,12 @@ export const ProductDetailPage = () => {
     return (
         <>
             <ProductDetailToolbar currentId={id} />
-            <div className="grid gap-8 py-4 lg:grid-cols-2 w-full lg:w-3xl mx-auto">
-                <ProductDetailsImage device={device!} isLoading={isPending} />
-                <ProductDetails device={device!} isLoading={isPending} />
+            <div className="mx-auto flex w-full flex-col items-center gap-8 py-4 lg:w-3xl">
+                <div className="grid w-full gap-8 lg:grid-cols-2">
+                    <ProductDetailsImage device={device!} isLoading={isPending} />
+                    <ProductDetails device={device!} isLoading={isPending} />
+                </div>
+                {!isPending && <ProductJsonDetailsDialog device={device!} />}
             </div>
         </>
     );
