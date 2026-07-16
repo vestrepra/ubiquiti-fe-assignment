@@ -47,7 +47,7 @@ export const CatalogViewTable = ({
             <thead className="sticky h-8 min-h-8 top-28.5 z-40 bg-surface supports-backdrop-filter:bg-surface/95">
                 <tr>
                     <CatalogViewTableColumn as="th" className="w-10" />
-                    <CatalogViewTableColumn as="th" className="w-40">
+                    <CatalogViewTableColumn as="th" className="w-30 sm:w-auto">
                         Product Line
                     </CatalogViewTableColumn>
                     <CatalogViewTableColumn as="th">
