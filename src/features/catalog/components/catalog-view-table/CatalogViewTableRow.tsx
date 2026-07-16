@@ -13,18 +13,20 @@ export type CatalogViewTableRowProps = {
 export const CatalogViewTableRow = ({ device }: CatalogViewTableRowProps) => {
     const navigate = useNavigate();
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTableRowElement>) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            navigate(`/product/${device.id}`);
+        }
+    };
+
     return (
         <tr
             role="link"
             tabIndex={0}
             aria-label={device.product.name}
             onClick={() => navigate(`/product/${device.id}`)}
-            onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    navigate(`/product/${device.id}`);
-                }
-            }}
+            onKeyDown={handleKeyDown}
             className={cn(
                 'h-8 min-h-8 cursor-pointer hover:bg-surface-header',
                 focusClassInset,

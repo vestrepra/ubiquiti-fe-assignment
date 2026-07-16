@@ -4,11 +4,13 @@ import { BackButton } from './BackButton';
 import { BrowseArrows } from './BrowseArrows';
 import { useProductNavigation } from '../../hooks/useProductNavigation';
 
+export type ProductDetailToolbarProps = {
+    currentId: string | undefined;
+};
+
 export const ProductDetailToolbar = ({
     currentId,
-}: {
-    currentId: string | undefined;
-}) => {
+}: ProductDetailToolbarProps) => {
     const { goToPrevious, goToNext, hasPrevious, hasNext } =
         useProductNavigation(currentId);
     const navigate = useNavigate();

@@ -6,7 +6,7 @@ const COLUMN_QUERIES = [
     { query: '(min-width: 640px)', columns: 3 },
 ] as const;
 
-function getColumnCount() {
+const getColumnCount = () => {
     for (const { query, columns } of COLUMN_QUERIES) {
         if (window.matchMedia(query).matches) {
             return columns;
@@ -14,9 +14,9 @@ function getColumnCount() {
     }
 
     return 2;
-}
+};
 
-function subscribe(onStoreChange: () => void) {
+const subscribe = (onStoreChange: () => void) => {
     const mediaQueries = COLUMN_QUERIES.map(({ query }) =>
         window.matchMedia(query),
     );
@@ -30,8 +30,8 @@ function subscribe(onStoreChange: () => void) {
             mediaQuery.removeEventListener('change', onStoreChange);
         });
     };
-}
+};
 
-export function useCatalogGridColumns() {
+export const useCatalogGridColumns = () => {
     return useSyncExternalStore(subscribe, getColumnCount, () => 2);
-}
+};

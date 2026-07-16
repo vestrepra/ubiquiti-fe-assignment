@@ -10,7 +10,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
  * incompatible library and skips memoizing that component; wrapping it would
  * leave the component memoized and render stale (blank) rows while scrolling.
  */
-export function useWindowScrollMargin<T extends HTMLElement>() {
+export const useWindowScrollMargin = <T extends HTMLElement>() => {
     const ref = useRef<T>(null);
     const [scrollMargin, setScrollMargin] = useState(0);
 
@@ -44,4 +44,4 @@ export function useWindowScrollMargin<T extends HTMLElement>() {
     }, []);
 
     return { ref, scrollMargin };
-}
+};

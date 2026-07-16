@@ -1,11 +1,12 @@
 import { cn } from '@/shared/lib/cn';
 
+const lineClass = 'block h-0.5 transition-all duration-300 bg-current';
+
 export type HamburgerProps = {
     isActive?: boolean;
     className?: string;
     onClick?: () => void;
 };
-const lineClass = 'block h-0.5 transition-all duration-300 bg-current';
 
 export const Hamburger = ({
     isActive = false,
