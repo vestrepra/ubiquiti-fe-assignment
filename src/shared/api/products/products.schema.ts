@@ -13,12 +13,22 @@ export const ImageSchema = z.looseObject({
     default: z.string(),
 });
 
+export const UnifiNetworkSchema = z.looseObject({
+    numberOfPorts: z.number().optional(),
+    ethernetMaxSpeedMegabitsPerSecond: z.number().optional(),
+});
+
+export const UnifiSchema = z.looseObject({
+    network: UnifiNetworkSchema.optional(),
+});
+
 export const DeviceSchema = z.looseObject({
     id: z.string(),
     line: LineSchema,
     product: ProductInfoSchema,
     shortnames: z.array(z.string()),
     images: ImageSchema,
+    unifi: UnifiSchema.optional(),
 });
 
 export const ProductsResponseSchema = z.object({
