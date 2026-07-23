@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Image } from '@/shared/ui/image/Image';
 import { type Device } from '@/shared/api/products';
 import { deviceImageUrl } from '@/shared/lib/device-image-url';
@@ -13,17 +12,15 @@ export const ProductDetailsImage = ({
     device,
     isLoading,
 }: ProductDetailsImageProps) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const showSkeleton = isLoading || !imageLoaded;
-
     return (
         <div className="relative flex h-80 items-center justify-center rounded-md bg-surface-muted">
-            {showSkeleton && (
+            {isLoading || !device ? (
                 <Skeleton className="absolute inset-0 rounded-md" />
-            )}
-            {!isLoading && device && (
+            ) : (
                 <Image
                     key={device.id}
+                    showSkeleton
+                    skeletonClassName="rounded-md"
                     src={deviceImageUrl({
                         deviceId: device.id,
                         imageHash: device.images.default,
@@ -31,8 +28,7 @@ export const ProductDetailsImage = ({
                     })}
                     alt={device.product.name}
                     loading="eager"
-                    onLoadingChange={setImageLoaded}
-                    className="relative z-10 h-full w-full object-contain"
+                    className="h-full w-full object-contain"
                 />
             )}
         </div>

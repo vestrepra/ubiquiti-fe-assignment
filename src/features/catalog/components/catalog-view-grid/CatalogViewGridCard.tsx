@@ -24,13 +24,14 @@ export const CatalogViewGridCard = ({ device }: CatalogViewGridCardProps) => {
                     {device.line.name}
                 </span>
                 <Image
+                    showSkeleton
                     src={deviceImageUrl({
                         deviceId: device.id,
                         imageHash: device.images.default,
                         width: 320,
                     })}
                     alt=""
-                    className="h-full object-contain"
+                    className="h-full w-full object-contain"
                 />
             </div>
 

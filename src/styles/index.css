@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@/shared/ui/drawer/drawer.css';
 @import '@/shared/ui/dialog/dialog.css';
+@import '@/shared/ui/skeleton/skeleton.css';
 
 @theme {
     /* UniFi palette — extracted from Figma style guide */
